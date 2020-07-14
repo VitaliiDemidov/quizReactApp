@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import './App.css';
+import Result from './component/Result';
+import Login from './component/Login';
+import Quiz from './component/Quiz';
+import { NotFound } from './component/NotFound';
+import { connect } from 'react-redux';
 
-function App() {
+const App = ({ name = '' }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Router>
+        <Switch>
+          <Route exact path='/' component={Quiz}>
+            {name ? <Quiz /> : <Redirect to='/login' />}
+          </Route>
+          <Route path='/login' component={Login}>
+            <Login />
+          </Route>
+          <Route path='/result' component={Result}>
+            {name ? <Result /> : <Redirect to='/login' />}
+          </Route>
+          <Route path='*' component={NotFound} />
+        </Switch>
+      </Router>
     </div>
   );
-}
+};
+const mapStateToProps = (state) => {
+  return {
+    name: state.user.name,
+  };
+};
 
-export default App;
+export default connect(mapStateToProps)(App);
