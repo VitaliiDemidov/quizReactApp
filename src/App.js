@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  HashRouter,
   BrowserRouter as Router,
   Switch,
   Route,
@@ -15,24 +14,22 @@ import { connect } from 'react-redux';
 
 const App = ({ name = '' }) => {
   return (
-    <HashRouter basename='/'>
-      <div className='App'>
-        <Router>
-          <Switch>
-            <Route exact path='/' component={Quiz}>
-              {name ? <Quiz /> : <Redirect to='/login' />}
-            </Route>
-            <Route path='/login' component={Login}>
-              <Login />
-            </Route>
-            <Route path='/result' component={Result}>
-              {name ? <Result /> : <Redirect to='/login' />}
-            </Route>
-            <Route path='*' component={NotFound} />
-          </Switch>
-        </Router>
-      </div>
-    </HashRouter>
+    <div className='App'>
+      <Router>
+        <Switch>
+          <Route exact path='/' component={Quiz}>
+            {name ? <Quiz /> : <Redirect to='/login' />}
+          </Route>
+          <Route path='/login' component={Login}>
+            <Login />
+          </Route>
+          <Route path='/result' component={Result}>
+            {name ? <Result /> : <Redirect to='/login' />}
+          </Route>
+          <Route path='*' component={NotFound} />
+        </Switch>
+      </Router>
+    </div>
   );
 };
 const mapStateToProps = (state) => {

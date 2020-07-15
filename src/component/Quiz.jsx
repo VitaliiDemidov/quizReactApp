@@ -31,13 +31,14 @@ const Quiz = ({ name, quiz, addResult }) => {
   return (
     <div>
       <h2 className='App-link'>
-        <small>Greetings</small> {name}!
+        <small>Hello,</small> {name}!
       </h2>
       <span>
         question {index + 1} from {quiz.length}
       </span>
       <div>
-        <h3>{currentQuestion}</h3>
+        <h3 className='text'>{currentQuestion}</h3>
+        <h5>Is it True or False?</h5>
       </div>
       <div className='buttons'>
         <div className='rows'>

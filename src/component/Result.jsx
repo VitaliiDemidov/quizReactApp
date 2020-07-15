@@ -3,23 +3,26 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchQuestions } from '../redux/thunk/action';
 import { resetScore } from '../redux/actions';
+import style from './result.module.css';
 
 const Result = ({ score, fetchQuestions, resetScore, name }) => (
-  <div className='score-card'>
-    <div className='score'>
-      {name},you scored {score} / 10 correct answers!
-      {score >= 7 ? 'You Won!!' : 'You Lost'}
+  <div>
+    <div className={style.text}>
+      <h3>
+        {name},you scored {score} / 10 correct answers!
+      </h3>
+      <h4>{score >= 7 ? 'You Won!!' : 'You Lost'}</h4>
     </div>
     <Link to='/'>
       <button
-        className='playBtn'
+        className={style.button_true}
         onClick={(() => fetchQuestions(), () => resetScore())}
       >
         Play again!
       </button>
     </Link>
     <Link to='/login'>
-      <button className='playBtn' onClick={() => fetchQuestions()}>
+      <button className={style.button_true} onClick={() => fetchQuestions()}>
         New game
       </button>
     </Link>

@@ -44,9 +44,11 @@ h2 {
 }
 .button-true {
     align-self: start;
+    background-color: #8bc34a;
 }
 .button-false {
     align-self: flex-end;
+    background-color: #ff5b55;
 }
 .buttons {
     display: flex;
@@ -56,12 +58,6 @@ h2 {
 .App-link {
     color: #61dafb;
 }
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.text {
+    height: 100px;
 }
