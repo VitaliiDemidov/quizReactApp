@@ -1,4 +1,4 @@
-import { ADD_NAME, RESEST_SCORE, ADD_RESULT } from './actions';
+import { ADD_NAME, RESEST_SCORE, ADD_RESULT, RESET_NAME } from './actions';
 import { SET_QESTION } from './thunk/action';
 
 const initialState = {};
@@ -8,10 +8,11 @@ export const nameReducer = (state = initialState, action) => {
       return {
         ...state,
         name: action.payload,
-        points: 0,
       };
     case ADD_RESULT:
       return { ...state, result: { ...state.result, ...action.payload } };
+    case RESET_NAME:
+      return initialState;
     case RESEST_SCORE:
       return { ...state, result: {} };
     default:
