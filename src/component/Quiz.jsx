@@ -7,7 +7,7 @@ const Quiz = ({ name, quiz, addResult }) => {
   const history = useHistory();
   const [index, setIndex] = useState(0);
   let currentQuestion = quiz[index].question;
-  let currentAnswer = quiz[index].answer;
+  let currentAnswer = quiz[index].correct_answer;
 
   const heandleClick = (e) => {
     const result = e.target.value;
